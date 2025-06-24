@@ -28,5 +28,31 @@ void main() {
         expect(calculator.add('5,10'), equals(15));
       });
     });
+
+    group('Multiple numbers', () {
+      // failed test case for handling any amount of numbers
+      test('should fail on handling any amount of numbers', () {
+        expect(calculator.add('1,2,3,4,5,6,7,8,9,'), equals(55));
+      });
+
+      test('should handle any amount of numbers', () {
+        expect(calculator.add('1,2,3'), equals(6));
+        expect(calculator.add('1,2,3,4,5'), equals(15));
+        expect(calculator.add('10,20,30,40'), equals(100));
+      });
+    });
+
+    group('New line delimiter', () {
+      // failed test case for handling new lines between numbers
+      test('should fail on handling new lines between numbers', () {
+        expect(calculator.add('1\n2,3'), equals(7));
+      });
+
+      test('should handle new lines between numbers', () {
+        expect(calculator.add('1\n2,3'), equals(6));
+        expect(calculator.add('1\n2\n3'), equals(6));
+        expect(calculator.add('1,2\n3,4'), equals(10));
+      });
+    });
   });
 }
