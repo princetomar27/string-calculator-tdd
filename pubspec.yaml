@@ -1,0 +1,10 @@
+name: string_calculator_kata
+description: A TDD implementation of the String Calculator Kata in Dart
+version: 1.0.0
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dev_dependencies:
+  test: ^1.21.0
+  lints: ^2.0.0
