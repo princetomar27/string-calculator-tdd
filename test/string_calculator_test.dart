@@ -105,5 +105,17 @@ void main() {
                 e.toString().contains('negative numbers not allowed -2'))));
       });
     });
+
+    group('Edge cases', () {
+      test('should handle spaces around numbers', () {
+        expect(calculator.add(' 1 , 2 '), equals(3));
+      });
+
+      test('should handle zero', () {
+        expect(calculator.add('0'), equals(0));
+        expect(calculator.add('0,1'), equals(1));
+        expect(calculator.add('1,0,2'), equals(3));
+      });
+    });
   });
 }
