@@ -54,5 +54,21 @@ void main() {
         expect(calculator.add('1,2\n3,4'), equals(10));
       });
     });
+
+    group('Custom delimiters', () {
+      test('should support custom delimiter', () {
+        expect(calculator.add('//;\n1;2'), equals(3));
+        expect(calculator.add('//|\n1|2|3'), equals(6));
+        expect(calculator.add('//*\n1*2*3*4'), equals(10));
+      });
+
+      test('should handle custom delimiter with single number', () {
+        expect(calculator.add('//;\n5'), equals(5));
+      });
+
+      test('should handle custom delimiter with empty numbers', () {
+        expect(calculator.add('//;\n'), equals(0));
+      });
+    });
   });
 }
