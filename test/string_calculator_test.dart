@@ -87,6 +87,23 @@ void main() {
                 e is Exception &&
                 e.toString().contains('negative numbers not allowed -1, -3'))));
       });
+
+      test('should throw exception for negative numbers with custom delimiter',
+          () {
+        expect(
+            () => calculator.add('//;\n-1;2;-3'),
+            throwsA(predicate((e) =>
+                e is Exception &&
+                e.toString().contains('negative numbers not allowed -1, -3'))));
+      });
+
+      test('should throw exception for negative numbers with newlines', () {
+        expect(
+            () => calculator.add('1\n-2,3'),
+            throwsA(predicate((e) =>
+                e is Exception &&
+                e.toString().contains('negative numbers not allowed -2'))));
+      });
     });
   });
 }
